@@ -1,0 +1,28 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>
+      iTunes
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+<ion-searchbar 
+[(ngModel)]="searchTerm"
+    (ionChange)="setFilteredItems()"></ion-searchbar>
+
+<div *ngIf="searching" class="spinner-container">
+    <ion-spinner></ion-spinner>
+  </div>
+
+<ion-content>
+<ion-card *ngFor="let album of albums">
+    <ion-item>
+        <ion-avatar slot="start"> 
+          <ion-img src="{{album.artworkUrl60}}"></ion-img>
+        </ion-avatar>
+        <ion-label>{{album.artistName}}<br>
+          <ion-icon name="pulse"></ion-icon>{{album.trackName}}</ion-label>
+      <ion-icon name="play" style="color:red" (click)="onPlay()"></ion-icon>
+      </ion-item>
+      </ion-card>
+</ion-content>
+
